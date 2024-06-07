@@ -1,22 +1,24 @@
 #include <stdio.h>
 
 int main() {
-    int list[5] = {1, 2, 3, 4, 5};
-    int number = 10;
-    int position = 2;
-    int n = 5;
-
-    for (int i = n; i >= position; i--) {
-        list[i] = list[i - 1];
+    int numbers[] = {4, 7, 2, 9, 1, 5};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    
+    for (int i = 0; i < size; i++) {
+        int min = numbers[i];
+        int max = numbers[i];
+        
+        for (int j = i + 1; j < size; j++) {
+            if (numbers[j] < min) {
+                min = numbers[j];
+            }
+            if (numbers[j] > max) {
+                max = numbers[j];
+            }
+        }
+        
+        printf("For number %d: Min = %d, Max = %d\n", numbers[i], min, max);
     }
-
-    list[position - 1] = number;
-    n++;
-
-    printf("List after inserting %d at position %d:\n", number, position);
-    for (int i = 0; i < n; i++) {
-        printf("%d ", list[i]);
-    }
-
+    
     return 0;
 }
